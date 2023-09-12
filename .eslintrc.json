@@ -77,28 +77,22 @@
         "alphabetize": { "order": "asc", "caseInsensitive": true },
         "pathGroups": [
           {
-            "pattern": "@/types/**",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "@/utils/**",
-            "group": "internal",
-            "position": "before"
-          },
-          {
-            "pattern": "@/hooks/**",
-            "group": "internal",
-            "position": "before"
-          },
-          { "pattern": "@/styles/**", "group": "index", "position": "before" },
-          {
-            "pattern": "@/components/**",
-            "group": "internal",
-            "position": "before"
-          },
-          {
             "pattern": "@/app/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/common/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/model/todo/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/model/user/**",
             "group": "internal",
             "position": "before"
           }

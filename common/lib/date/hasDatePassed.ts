@@ -1,6 +1,6 @@
-import { startOfToday, isAfter } from "date-fns";
+import { isBefore, startOfToday } from "date-fns";
 
 export function hasDatePassed(dateToCheck: Date): boolean {
   const today = startOfToday();
-  return isAfter(dateToCheck, today);
+  return isBefore(dateToCheck, today);
 }

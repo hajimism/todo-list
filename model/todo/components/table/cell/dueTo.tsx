@@ -33,7 +33,7 @@ export const TodoDueToCell = () => {
             variant={"ghost"}
             className={cn(
               "w-full justify-start text-left",
-              !isDead && "text-destructive hover:text-destructive",
+              isDead && "text-destructive hover:text-destructive",
               !dueTo && "text-muted-foreground hover:text-muted-foreground"
             )}
           >

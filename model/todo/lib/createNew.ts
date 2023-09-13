@@ -1,9 +1,9 @@
-import { nanoid } from "nanoid";
+import { generateId } from "@/common/lib/generateId";
 
 import { Todo } from "../type";
 
 export const createNewTodo = (): Todo => ({
-  id: nanoid(),
+  id: generateId(),
   title: "",
   status: "todo",
   dueTo: undefined,

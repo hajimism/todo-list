@@ -1,6 +1,7 @@
 import "@/styles/tailwind.css";
+import type { PropsWithChildren } from "react";
+
 import { Inter } from "next/font/google";
-import { PropsWithChildren } from "react";
 
 import { Footer } from "@/common/components/layout/footer";
 import { Header } from "@/common/components/layout/header";

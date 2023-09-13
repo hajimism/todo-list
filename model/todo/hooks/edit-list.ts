@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { Todo } from "@/model/todo/";
+import type { Todo } from "@/model/todo/";
 import { createNewTodo } from "@/model/todo/lib/createNew";
 
 import { useCurrentUser } from "@/model/user/hooks/currentUser";

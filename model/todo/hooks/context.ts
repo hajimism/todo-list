@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 
-import { MOCK_TODOS } from "../mock";
-import { Todo } from "../type";
+import type { Todo } from "@/model/todo/";
+import { MOCK_TODOS } from "@/model/todo/mock";
 
 export const TodoContext = createContext<Todo>(MOCK_TODOS[0]!);
 

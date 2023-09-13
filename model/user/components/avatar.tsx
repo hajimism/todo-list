@@ -7,7 +7,7 @@ import {
 } from "@/common/components/ui/avatar";
 import { getInitial } from "@/common/lib/getInitial";
 
-import { User } from "../type";
+import type { User } from "@/model/user/";
 
 type Props = {
   user: User;

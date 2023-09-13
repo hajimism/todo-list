@@ -1,10 +1,11 @@
 "use client";
 
+import type { FC, PropsWithChildren } from "react";
+
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Provider as JotaiProvider } from "jotai";
 import { useHydrateAtoms } from "jotai/react/utils";
 import { queryClientAtom } from "jotai-tanstack-query";
-import { FC, PropsWithChildren } from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { suspense: true } },

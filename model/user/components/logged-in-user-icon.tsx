@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { type FC, useCallback } from "react";
 
 import {
   DropdownMenu,
@@ -12,11 +12,9 @@ import {
 } from "@/common/components/ui/dropdown-menu";
 import { Skeleton } from "@/common/components/ui/skeleton";
 
-import { UserAvatar } from "./avatar";
-import { useCurrentUser } from "../hooks/currentUser";
-import { hajimism } from "../mock";
-
-import type { FC } from "react";
+import { UserAvatar } from "@/model/user/components/avatar";
+import { useCurrentUser } from "@/model/user/hooks/currentUser";
+import { hajimism } from "@/model/user/mock";
 
 export const LoggedInUserIcon: FC = () => {
   const [user, setUser] = useCurrentUser();

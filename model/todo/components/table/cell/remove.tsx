@@ -11,7 +11,7 @@ import { useTodoContext } from "@/model/todo/hooks/context";
 import { Todo } from "@/model/todo/type";
 
 type Props = {
-  onRemove: (_todo: Pick<Todo, "id">) => void;
+  onRemove: (todo: Pick<Todo, "id">) => void;
 };
 
 export const TodoRemoveCell: FC<Props> = ({ onRemove }) => {

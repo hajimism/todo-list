@@ -1,5 +1,6 @@
-import { Todo } from "./type";
-import { MOCK_USERS } from "../user/mock";
+import type { Todo } from "@/model/todo/";
+
+import { MOCK_USERS } from "@/model/user/mock";
 
 export const MOCK_TODOS: Todo[] = [
   {

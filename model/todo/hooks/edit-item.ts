@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { useCallback } from "react";
 
-import { Todo, TodoAssignee, TodoDueTo, TodoStatus } from "@/model/todo/";
+import type { Todo, TodoAssignee, TodoDueTo, TodoStatus } from "@/model/todo/";
 import { todoFamily } from "@/model/todo/atom";
 
 // TODO: API作成後、useMutationを用いる

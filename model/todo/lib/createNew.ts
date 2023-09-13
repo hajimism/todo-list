@@ -1,6 +1,6 @@
 import { generateId } from "@/common/lib/generateId";
 
-import { Todo } from "../type";
+import type { Todo } from "@/model/todo/";
 
 export const createNewTodo = (): Todo => ({
   id: generateId(),

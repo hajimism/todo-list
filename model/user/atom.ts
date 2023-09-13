@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 
-import { hajimism, MOCK_USERS } from "./mock";
-import { User } from "./type";
+import { User } from "@/model/user/";
+import { hajimism, MOCK_USERS } from "@/model/user/mock";
 
 export const allCollaboratorAtom = atom(MOCK_USERS);
 

@@ -1,5 +1,11 @@
 import { User } from "./type";
 
+export const hajimism: User = {
+  id: "hajimism",
+  name: "hajimism",
+  iconUrl: "/hajimism.png",
+};
+
 export const MOCK_USERS: readonly User[] = [
   {
     id: "1",

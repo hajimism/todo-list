@@ -8,7 +8,7 @@ import { Todo } from "./type";
 
 export const todoFamily = atomFamily(
   (param: Todo) => atom(param),
-  (a, b) => a.id === b.id,
+  (a, b) => a.id === b.id
 );
 
 export const [todosAtom] = atomsWithQuery(() => ({

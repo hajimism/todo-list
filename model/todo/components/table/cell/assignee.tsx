@@ -27,7 +27,7 @@ export const TodoAssigneeCell = () => {
       const assignee = allCollaborator.find(({ id }) => id === userId);
       setAssignee(assignee);
     },
-    [allCollaborator, setAssignee],
+    [allCollaborator, setAssignee]
   );
 
   return (
@@ -37,13 +37,13 @@ export const TodoAssigneeCell = () => {
         onValueChange={onSelect}
       >
         <SelectTrigger>
-          <SelectValue placeholder="Assginee" />
+          <SelectValue placeholder='Assginee' />
         </SelectTrigger>
         <SelectContent>
           {allCollaborator.map((user) => (
             <SelectItem key={user.id} value={user.id}>
-              <div className="flex items-center gap-4">
-                <UserAvatar user={user} className="h-8 w-8" />
+              <div className='flex items-center gap-4'>
+                <UserAvatar user={user} className='h-8 w-8' />
                 <span>{user.name}</span>
               </div>
             </SelectItem>

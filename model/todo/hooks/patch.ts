@@ -12,28 +12,28 @@ export const usePatchTodo = (todo: Todo) => {
     (title: string) => {
       setState((prev) => ({ ...prev, title }));
     },
-    [setState],
+    [setState]
   );
 
   const setStatus = useCallback(
     (status: TodoStatus) => {
       setState((prev) => ({ ...prev, status }));
     },
-    [setState],
+    [setState]
   );
 
   const setDueTo = useCallback(
     (dueTo: TodoDueTo) => {
       setState((prev) => ({ ...prev, dueTo }));
     },
-    [setState],
+    [setState]
   );
 
   const setAssignee = useCallback(
     (assignee: TodoAssignee) => {
       setState((prev) => ({ ...prev, assignee }));
     },
-    [setState],
+    [setState]
   );
 
   return { todo: state, setTitle, setStatus, setDueTo, setAssignee };

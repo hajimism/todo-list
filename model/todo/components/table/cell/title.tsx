@@ -16,11 +16,11 @@ export const TodoTitleCell = () => {
     (e) => {
       setTitle(e.target.value);
     },
-    [setTitle],
+    [setTitle]
   );
 
   return (
-    <TableCell className="font-medium">
+    <TableCell className='font-medium'>
       <Input value={todo.title} onChange={onChange} />
     </TableCell>
   );

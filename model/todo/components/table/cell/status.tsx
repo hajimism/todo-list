@@ -45,7 +45,7 @@ export const TodoStatusCell = () => {
     <TableCell>
       <Select value={todo.status} onValueChange={setStatus}>
         <SelectTrigger>
-          <SelectValue placeholder="set me" />
+          <SelectValue placeholder='set me' />
         </SelectTrigger>
         <SelectContent>
           {Object.entries(TODO_STATUS_MAP).map(
@@ -56,7 +56,7 @@ export const TodoStatusCell = () => {
                   <span>{label}</span>
                 </div>
               </SelectItem>
-            ),
+            )
           )}
         </SelectContent>
       </Select>

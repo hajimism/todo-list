@@ -34,10 +34,10 @@ export const TodoDueToCell = () => {
             className={cn(
               "w-full justify-start text-left",
               !isDead && "text-destructive hover:text-destructive",
-              !dueTo && "text-muted-foreground hover:text-muted-foreground",
+              !dueTo && "text-muted-foreground hover:text-muted-foreground"
             )}
           >
-            <CalendarIcon className="mr-2 h-4 w-4" />
+            <CalendarIcon className='mr-2 h-4 w-4' />
             {dueTo ? (
               <time>{format(dueTo, "yyyy-MM-dd")}</time>
             ) : (
@@ -45,9 +45,9 @@ export const TodoDueToCell = () => {
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0">
+        <PopoverContent className='w-auto p-0'>
           <Calendar
-            mode="single"
+            mode='single'
             selected={dueTo}
             onSelect={setDueTo}
             initialFocus

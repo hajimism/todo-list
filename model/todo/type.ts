@@ -1,13 +1,28 @@
-import { User } from "@/model/user";
+import {
+  Input,
+  date,
+  enumType,
+  object,
+  optional,
+  string,
+} from "@/common/lib/schema";
 
-export type TodoStatus = "todo" | "doing" | "done";
-export type TodoAssignee = User | undefined;
-export type TodoDueTo = Date | undefined;
+import { UserSchema } from "@/model/user";
 
-export type Todo = {
-  id: string;
-  title: string;
-  status: TodoStatus;
-  assignee?: TodoAssignee;
-  dueTo: TodoDueTo;
-};
+export const TodoStatusSchema = enumType(["todo", "doing", "done"]);
+export const TodoAssigneeSchema = optional(UserSchema);
+export const TodoDueToSchema = optional(date());
+
+export const TodoSchema = object({
+  id: string(),
+  title: string(),
+  status: TodoStatusSchema,
+  assignee: TodoAssigneeSchema,
+  dueTo: TodoDueToSchema,
+});
+
+export type TodoStatus = Input<typeof TodoStatusSchema>;
+export type TodoAssignee = Input<typeof TodoAssigneeSchema>;
+export type TodoDueTo = Input<typeof TodoDueToSchema>;
+
+export type Todo = Input<typeof TodoSchema>;

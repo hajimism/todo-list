@@ -1,5 +1,3 @@
-"use client";
-
 import { FC } from "react";
 
 import { TableRow } from "@/common/components/ui/table";
@@ -24,8 +22,8 @@ export const TodoTableRow: FC<Props> = ({ todo }) => {
       <TableRow>
         <TodoTitleCell />
         <TodoStatusCell />
-        <TodoAssigneeCell />
         <TodoDueToCell />
+        <TodoAssigneeCell />
       </TableRow>
     </TodoContext.Provider>
   );

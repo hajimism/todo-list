@@ -22,8 +22,8 @@ export const TodoTable: FC<Props> = ({ todos }) => (
       <TableRow>
         <TableHead>Title</TableHead>
         <TableHead>Status</TableHead>
-        <TableHead>Assignee</TableHead>
         <TableHead>Due to</TableHead>
+        <TableHead>Assignee</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>

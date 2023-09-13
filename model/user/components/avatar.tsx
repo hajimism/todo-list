@@ -11,10 +11,11 @@ import { User } from "../type";
 
 type Props = {
   user: User;
+  className?: string | undefined;
 };
 
-export const UserAvatar: FC<Props> = ({ user }) => (
-  <Avatar>
+export const UserAvatar: FC<Props> = ({ user, className }) => (
+  <Avatar className={className}>
     <AvatarImage src={user.iconUrl} />
     <AvatarFallback>{getInitial(user.name)}</AvatarFallback>
   </Avatar>

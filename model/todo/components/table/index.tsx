@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus, Trash2 } from "lucide-react";
+import { Plus } from "lucide-react";
 import { FC } from "react";
 
 import { Button } from "@/common/components/ui/button";
@@ -10,25 +10,24 @@ import {
   TableHead,
   TableBody,
   Table,
-  TableCell,
 } from "@/common/components/ui/table";
 
 import type { Todo } from "@/model/todo/";
-import { TodoContext, useManageTodos } from "@/model/todo/hooks";
-
 import {
   TodoTitleCell,
   TodoStatusCell,
   TodoDueToCell,
   TodoAssigneeCell,
-} from "./cell";
+  TodoRemoveCell,
+} from "@/model/todo/components/table/cell";
+import { TodoContext, useEditTodos } from "@/model/todo/hooks";
 
 type Props = {
   todos: Todo[];
 };
 
 export const TodoTable: FC<Props> = ({ todos }) => {
-  const { todosState, addTodo, removeTodo } = useManageTodos(todos);
+  const { todosState, addTodo, removeTodo } = useEditTodos(todos);
 
   return (
     <Table>
@@ -58,15 +57,7 @@ export const TodoTable: FC<Props> = ({ todos }) => {
               <TodoStatusCell />
               <TodoDueToCell />
               <TodoAssigneeCell />
-              <TableCell className='font-medium'>
-                <Button
-                  variant='ghost'
-                  className='px-2'
-                  onClick={() => removeTodo(todo)}
-                >
-                  <Trash2 className='text-muted-foreground' />
-                </Button>
-              </TableCell>
+              <TodoRemoveCell onRemove={removeTodo} />
             </TableRow>
           </TodoContext.Provider>
         ))}

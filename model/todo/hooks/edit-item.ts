@@ -1,11 +1,11 @@
 import { useAtom } from "jotai";
 import { useCallback } from "react";
 
-import { todoFamily } from "../atom";
-import { Todo, TodoAssignee, TodoDueTo, TodoStatus } from "../type";
+import { Todo, TodoAssignee, TodoDueTo, TodoStatus } from "@/model/todo/";
+import { todoFamily } from "@/model/todo/atom";
 
 // TODO: API作成後、useMutationを用いる
-export const usePatchTodo = (todo: Todo) => {
+export const useEditTodoItem = (todo: Todo) => {
   const [state, setState] = useAtom(todoFamily(todo));
 
   const setTitle = useCallback(
@@ -36,5 +36,16 @@ export const usePatchTodo = (todo: Todo) => {
     [setState]
   );
 
-  return { todo: state, setTitle, setStatus, setDueTo, setAssignee };
+  const removeTodo = useCallback(() => {
+    todoFamily.remove(todo);
+  }, [todo]);
+
+  return {
+    todo: state,
+    setTitle,
+    setStatus,
+    setDueTo,
+    setAssignee,
+    removeTodo,
+  };
 };

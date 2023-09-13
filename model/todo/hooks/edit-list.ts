@@ -1,11 +1,11 @@
 import { useCallback, useState } from "react";
 
+import { Todo } from "@/model/todo/";
+import { createNewTodo } from "@/model/todo/lib/createNew";
+
 import { useCurrentUser } from "@/model/user/hooks/currentUser";
 
-import { createNewTodo } from "../lib/createNew";
-import { Todo } from "../type";
-
-export const useManageTodos = (todos: Todo[]) => {
+export const useEditTodos = (todos: Todo[]) => {
   const [todosState, setState] = useState(todos);
   const [currentUser] = useCurrentUser();
 

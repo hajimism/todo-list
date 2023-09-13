@@ -12,8 +12,8 @@ import {
 import { TableCell } from "@/common/components/ui/table";
 import { cn } from "@/common/lib/cn";
 
+import { useEditTodoItem } from "@/model/todo/hooks";
 import { useTodoContext } from "@/model/todo/hooks/context";
-import { usePatchTodo } from "@/model/todo/hooks/patch";
 import { TodoStatus } from "@/model/todo/type";
 
 const TODO_STATUS_MAP = {
@@ -39,7 +39,7 @@ const TODO_STATUS_MAP = {
 
 export const TodoStatusCell = () => {
   const todoContext = useTodoContext();
-  const { todo, setStatus } = usePatchTodo(todoContext);
+  const { todo, setStatus } = useEditTodoItem(todoContext);
 
   return (
     <TableCell>

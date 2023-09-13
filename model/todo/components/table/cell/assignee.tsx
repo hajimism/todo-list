@@ -11,8 +11,8 @@ import {
 } from "@/common/components/ui/select";
 import { TableCell } from "@/common/components/ui/table";
 
+import { useEditTodoItem } from "@/model/todo/hooks";
 import { useTodoContext } from "@/model/todo/hooks/context";
-import { usePatchTodo } from "@/model/todo/hooks/patch";
 
 import { UserAvatar } from "@/model/user/components/avatar";
 import { useAllCollaborator } from "@/model/user/hooks/allCollaborator";
@@ -22,7 +22,7 @@ import { User } from "@/model/user";
 
 export const TodoAssigneeCell = () => {
   const todoContext = useTodoContext();
-  const { todo, setAssignee } = usePatchTodo(todoContext);
+  const { todo, setAssignee } = useEditTodoItem(todoContext);
   const allCollaborator = useAllCollaborator();
   const [currentUser] = useCurrentUser();
 

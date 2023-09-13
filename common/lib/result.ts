@@ -1,3 +1,11 @@
+/**
+ * This code came from option-t library.
+ * option-t is released under the MIT License.
+ *
+ * Copyright (c) 2015-present Tetsuharu OHZEKI <tetsuharu.ohzeki@gmail.com>
+ * https://github.com/option-t/option-t/blob/main/LICENSE.MIT
+ */
+
 const ERR_MSG_UNWRAP_ERR_BUT_INPUT_IS_OK = "called with `Ok`";
 const ERR_MSG_UNWRAP_OK_BUT_INPUT_IS_ERR = "called with `Err`";
 

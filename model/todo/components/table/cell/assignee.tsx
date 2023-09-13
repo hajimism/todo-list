@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 import {
   Select,
@@ -16,18 +16,27 @@ import { usePatchTodo } from "@/model/todo/hooks/patch";
 
 import { UserAvatar } from "@/model/user/components/avatar";
 import { useAllCollaborator } from "@/model/user/hooks/allCollaborator";
+import { useCurrentUser } from "@/model/user/hooks/currentUser";
+
+import { User } from "@/model/user";
 
 export const TodoAssigneeCell = () => {
   const todoContext = useTodoContext();
   const { todo, setAssignee } = usePatchTodo(todoContext);
   const allCollaborator = useAllCollaborator();
+  const [currentUser] = useCurrentUser();
+
+  const options: readonly User[] = useMemo(
+    () => (currentUser ? [currentUser, ...allCollaborator] : allCollaborator),
+    [allCollaborator, currentUser]
+  );
 
   const onSelect = useCallback(
     (userId: string) => {
-      const assignee = allCollaborator.find(({ id }) => id === userId);
+      const assignee = options.find(({ id }) => id === userId);
       setAssignee(assignee);
     },
-    [allCollaborator, setAssignee]
+    [options, setAssignee]
   );
 
   return (
@@ -40,7 +49,7 @@ export const TodoAssigneeCell = () => {
           <SelectValue placeholder='Assginee' />
         </SelectTrigger>
         <SelectContent>
-          {allCollaborator.map((user) => (
+          {options.map((user) => (
             <SelectItem key={user.id} value={user.id}>
               <div className='flex items-center gap-4'>
                 <UserAvatar user={user} className='h-8 w-8' />

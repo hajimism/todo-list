@@ -1,5 +1,7 @@
 import {
   Input,
+  array,
+  coerce,
   date,
   enumType,
   object,
@@ -11,7 +13,9 @@ import { UserSchema } from "@/model/user";
 
 export const TodoStatusSchema = enumType(["todo", "doing", "done"]);
 export const TodoAssigneeSchema = optional(UserSchema);
-export const TodoDueToSchema = optional(date());
+export const TodoDueToSchema = optional(
+  coerce(date(), (i: any) => new Date(i))
+);
 
 export const TodoSchema = object({
   id: string(),
@@ -20,6 +24,8 @@ export const TodoSchema = object({
   assignee: TodoAssigneeSchema,
   dueTo: TodoDueToSchema,
 });
+
+export const TodoListSchema = array(TodoSchema);
 
 export type TodoStatus = Input<typeof TodoStatusSchema>;
 export type TodoAssignee = Input<typeof TodoAssigneeSchema>;

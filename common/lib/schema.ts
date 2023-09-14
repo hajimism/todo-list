@@ -8,6 +8,7 @@ export {
   object,
   optional,
   is,
+  coerce,
 } from "valibot";
 
 import { BaseSchema, Output, ParseInfo, ValiError } from "valibot";

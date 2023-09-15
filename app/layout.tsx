@@ -3,6 +3,7 @@ import type { PropsWithChildren } from "react";
 
 import { Inter } from "next/font/google";
 
+import { Dialog } from "@/common/components/functional/dialog";
 import { Footer } from "@/common/components/layout/footer";
 import { Header } from "@/common/components/layout/header";
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Header />
         {children}
         <Footer />
+        <Dialog />
       </body>
     </html>
   );

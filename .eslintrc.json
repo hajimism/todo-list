@@ -72,7 +72,6 @@
     "no-restricted-imports": [
       "error",
       {
-        "patterns": ["./", "../"],
         "paths": [
           {
             "name": "react",

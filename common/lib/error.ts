@@ -7,7 +7,6 @@ export class FetchMethodError extends Error {
   override readonly name = "FetchMethodError" as const;
   constructor(message: string, options?: { cause: unknown }) {
     super(message, options);
-
     this.cause = options?.cause;
   }
 }

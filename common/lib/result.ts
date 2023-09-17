@@ -6,6 +6,8 @@
  * https://github.com/option-t/option-t/blob/main/LICENSE.MIT
  */
 
+import { loggingException } from "@/common/lib/log";
+
 const ERR_MSG_UNWRAP_ERR_BUT_INPUT_IS_OK = "called with `Ok`";
 const ERR_MSG_UNWRAP_OK_BUT_INPUT_IS_ERR = "called with `Err`";
 
@@ -197,6 +199,8 @@ export interface Err<out E> {
 }
 
 export function isErr<T, E>(input: Result<T, E>): input is Err<E> {
+  if (!input.ok) loggingException(unwrapErr(input));
+
   return !input.ok;
 }
 

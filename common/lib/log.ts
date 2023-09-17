@@ -1,3 +1,3 @@
-export function loggingException(err: Error) {
+export function loggingException(err: unknown) {
   console.error(err);
 }

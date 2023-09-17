@@ -1,9 +1,5 @@
-"use client";
+import type { FC } from "react";
 
-import { Plus } from "lucide-react";
-import { FC } from "react";
-
-import { Button } from "@/common/components/ui/button";
 import {
   TableHeader,
   TableRow,
@@ -11,23 +7,18 @@ import {
   TableBody,
   Table,
 } from "@/common/components/ui/table";
+import { isEmpty } from "@/common/lib/guard";
 
 import type { Todo } from "@/model/todo/";
-import {
-  TodoTitleCell,
-  TodoStatusCell,
-  TodoDueToCell,
-  TodoAssigneeCell,
-  TodoRemoveCell,
-} from "@/model/todo/components/table/cell";
-import { TodoContext, useEditTodos } from "@/model/todo/hooks";
+import { CreateNewTodoButton } from "@/model/todo/components/table/create-new-button";
+import { TodoTableRow } from "@/model/todo/components/table/row";
 
 type Props = {
   todos: Todo[];
 };
 
 export const TodoTable: FC<Props> = ({ todos }) => {
-  const { todosState, addTodo, removeTodo } = useEditTodos(todos);
+  const isTodoListEmpty = isEmpty(todos);
 
   return (
     <Table>
@@ -38,29 +29,16 @@ export const TodoTable: FC<Props> = ({ todos }) => {
           <TableHead>Due to</TableHead>
           <TableHead>Assignee</TableHead>
           <TableHead>
-            <Button
-              variant='ghost'
-              className='rounded-full px-2'
-              onClick={addTodo}
-            >
-              <Plus />
-            </Button>
+            <CreateNewTodoButton />
           </TableHead>
         </TableRow>
       </TableHeader>
 
       <TableBody>
-        {todosState.map((todo) => (
-          <TodoContext.Provider value={todo} key={todo.id}>
-            <TableRow>
-              <TodoTitleCell />
-              <TodoStatusCell />
-              <TodoDueToCell />
-              <TodoAssigneeCell />
-              <TodoRemoveCell onRemove={removeTodo} />
-            </TableRow>
-          </TodoContext.Provider>
+        {todos.map((todo) => (
+          <TodoTableRow todo={todo} key={todo.id} />
         ))}
+        {isTodoListEmpty && <TableRow>Well done!!</TableRow>}
       </TableBody>
     </Table>
   );

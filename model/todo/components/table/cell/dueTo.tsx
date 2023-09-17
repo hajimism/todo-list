@@ -15,8 +15,7 @@ import { format } from "@/common/lib/date";
 import { hasDatePassed } from "@/common/lib/date/hasDatePassed";
 import { isDefined } from "@/common/lib/guard";
 
-import { useEditTodoItem } from "@/model/todo/hooks";
-import { useTodoContext } from "@/model/todo/hooks/context";
+import { useEditTodoItem, useTodoContext } from "@/model/todo/hooks";
 
 export const TodoDueToCell = () => {
   const todoContext = useTodoContext();

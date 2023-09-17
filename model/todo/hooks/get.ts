@@ -1,5 +1,10 @@
-import { useAtomValue } from "jotai";
+import { useQuery } from "@tanstack/react-query";
 
-import { todosAtom } from "@/model/todo/atom";
+import { TODO_QUERY_KEY, getTodos } from "@/model/todo/query";
 
-export const useGetTodos = () => useAtomValue(todosAtom);
+export const useGetTodos = () =>
+  useQuery({
+    queryKey: [TODO_QUERY_KEY.getList],
+    queryFn: getTodos,
+    cacheTime: 0,
+  });

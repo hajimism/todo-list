@@ -12,9 +12,8 @@ import {
 import { TableCell } from "@/common/components/ui/table";
 import { cn } from "@/common/lib/cn";
 
-import { useEditTodoItem } from "@/model/todo/hooks";
-import { useTodoContext } from "@/model/todo/hooks/context";
-import { TodoStatus } from "@/model/todo/type";
+import { useTodoContext, useEditTodoItem } from "@/model/todo/hooks";
+import type { TodoStatus } from "@/model/todo/type";
 
 const TODO_STATUS_MAP = {
   done: {

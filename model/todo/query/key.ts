@@ -1,3 +1,5 @@
 export const TODO_QUERY_KEY = {
-  get: "todo.get",
+  getList: "todo.getList",
 };
+
+export const TODO_API_ENDPOINT = "/todos";

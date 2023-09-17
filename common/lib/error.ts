@@ -1,4 +1,4 @@
-import { ValiError } from "valibot";
+import type { ValiError } from "valibot";
 
 /**
  * fetch のメソッドの使い方が変かネットワークエラー
@@ -35,6 +35,17 @@ export class AuthorizationError extends Error {
 }
 
 /**
+ * リソースが見つからない
+ */
+export class NotFoundError extends Error {
+  override readonly name = "NotFoundError" as const;
+  constructor(message: string, options?: { cause: unknown }) {
+    super(message, options);
+    this.cause = options?.cause;
+  }
+}
+
+/**
  * どうにもならなかったときに使うエラー
  */
 export class InternalError extends Error {
@@ -49,5 +60,6 @@ export type RepositoryError =
   | FetchMethodError
   | ResponseParseError
   | AuthorizationError
+  | NotFoundError
   | ValiError
   | InternalError;

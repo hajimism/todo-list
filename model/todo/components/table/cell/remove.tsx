@@ -1,27 +1,35 @@
 "use client";
 
-import { Trash2 } from "lucide-react";
-import { FC, useCallback } from "react";
+import type { FC } from "react";
 
+import { Trash2 } from "lucide-react";
+import { useCallback } from "react";
+
+import { useDialog } from "@/common/components/functional/dialog";
 import { Button } from "@/common/components/ui/button";
 import { TableCell } from "@/common/components/ui/table";
+import { isErr } from "@/common/lib/result";
 
-import { useEditTodoItem } from "@/model/todo/hooks";
-import { useTodoContext } from "@/model/todo/hooks/context";
-import { Todo } from "@/model/todo/type";
+import {
+  useTodoContext,
+  useEditTodoItem,
+  useDeleteTodo,
+} from "@/model/todo/hooks";
 
-type Props = {
-  onRemove: (todo: Pick<Todo, "id">) => void;
-};
-
-export const TodoRemoveCell: FC<Props> = ({ onRemove }) => {
+export const TodoRemoveCell: FC = () => {
   const todoContext = useTodoContext();
-  const { todo, removeTodo } = useEditTodoItem(todoContext);
+  const { todo, dispose } = useEditTodoItem(todoContext);
+  const { mutateAsync } = useDeleteTodo();
+  const { openErrorDialog } = useDialog();
 
-  const onClick = useCallback(() => {
-    onRemove(todo);
-    removeTodo();
-  }, [onRemove, removeTodo, todo]);
+  const onClick = useCallback(async () => {
+    const result = await mutateAsync(todo);
+    if (isErr(result)) {
+      openErrorDialog();
+    } else {
+      dispose();
+    }
+  }, [todo, mutateAsync, dispose, openErrorDialog]);
 
   return (
     <TableCell className='font-medium'>

@@ -11,10 +11,13 @@ export {
   coerce,
 } from "valibot";
 
-import { BaseSchema, Output, ParseInfo, ValiError } from "valibot";
+import type { BaseSchema, Output, ParseInfo } from "valibot";
+
+import { ValiError } from "valibot";
 import { safeParse as validotSafeParse } from "valibot";
 
-import { createOk, createErr, Result } from "@/common/lib/result";
+import type { Result } from "@/common/lib/result";
+import { createOk, createErr } from "@/common/lib/result";
 
 export function safeParse<TSchema extends BaseSchema>(
   schema: TSchema,

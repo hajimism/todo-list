@@ -14,7 +14,7 @@ import { TableCell } from "@/common/components/ui/table";
 import { useEditTodoItem } from "@/model/todo/hooks";
 import { useTodoContext } from "@/model/todo/hooks/context";
 
-import { User } from "@/model/user/";
+import type { User } from "@/model/user/";
 import { UserAvatar } from "@/model/user/components/avatar";
 import { useAllCollaborator } from "@/model/user/hooks/allCollaborator";
 import { useCurrentUser } from "@/model/user/hooks/currentUser";

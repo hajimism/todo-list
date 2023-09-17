@@ -4,7 +4,6 @@ import { useCallback } from "react";
 import type { Todo, TodoAssignee, TodoDueTo, TodoStatus } from "@/model/todo/";
 import { todoFamily } from "@/model/todo/atom";
 
-// TODO: API作成後、useMutationを用いる
 export const useEditTodoItem = (todo: Todo) => {
   const [state, setState] = useAtom(todoFamily(todo));
 
@@ -36,7 +35,7 @@ export const useEditTodoItem = (todo: Todo) => {
     [setState]
   );
 
-  const removeTodo = useCallback(() => {
+  const dispose = useCallback(() => {
     todoFamily.remove(todo);
   }, [todo]);
 
@@ -46,6 +45,6 @@ export const useEditTodoItem = (todo: Todo) => {
     setStatus,
     setDueTo,
     setAssignee,
-    removeTodo,
+    dispose,
   };
 };

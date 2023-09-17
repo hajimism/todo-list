@@ -1,9 +1,6 @@
-import {
-  forwardRef,
-  HTMLAttributes,
-  ThHTMLAttributes,
-  TdHTMLAttributes,
-} from "react";
+import type { HTMLAttributes, ThHTMLAttributes, TdHTMLAttributes } from "react";
+
+import { forwardRef } from "react";
 
 import { cn } from "@/common/lib/cn";
 

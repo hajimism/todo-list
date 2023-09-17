@@ -1,6 +1,6 @@
-import { atom } from "jotai";
+import type { DialogProps } from "./type";
 
-import type { DialogProps } from "@/common/components/functional/dialog/type";
+import { atom } from "jotai";
 
 export const dialogAtom = atom<DialogProps>({
   open: false,

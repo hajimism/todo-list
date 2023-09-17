@@ -1,11 +1,16 @@
+import type { RepositoryError } from "./error";
+import type { Result } from "./result";
+
+import { loggingException } from "@/common/lib/log";
+
 import {
-  RepositoryError,
   FetchMethodError,
   AuthorizationError,
   InternalError,
   ResponseParseError,
+  NotFoundError,
 } from "./error";
-import { Result, createErr, createOk } from "./result";
+import { createErr, createOk } from "./result";
 
 const API_ENDPOINT = process.env["NEXT_PUBLIC_API_ENDPOINT"];
 
@@ -17,7 +22,7 @@ export const fetcher = (path: string, init?: RequestInit | undefined) =>
 export const callApi = async (
   path: string,
   init?: RequestInit
-): Promise<Result<any, RepositoryError>> => {
+): Promise<Result<unknown, RepositoryError>> => {
   let res;
   try {
     res = await fetcher(path, init);
@@ -29,6 +34,7 @@ export const callApi = async (
       }),
       { cause: e }
     );
+    loggingException(error);
     return createErr(error);
   }
 
@@ -42,8 +48,21 @@ export const callApi = async (
             res,
           })
         );
+        loggingException(error);
         return createErr(error);
       }
+      case 404: {
+        const error = new NotFoundError(
+          JSON.stringify({
+            reason: "resource was not found",
+            path,
+            res,
+          })
+        );
+        loggingException(error);
+        return createErr(error);
+      }
+      // TODO: Not found error
       default: {
         const error = new InternalError(
           JSON.stringify({
@@ -52,10 +71,18 @@ export const callApi = async (
             res,
           })
         );
+        loggingException(error);
         return createErr(error);
       }
     }
   }
+
+  const is204 = res.status === 204;
+  const isContentJson = res.headers
+    .get("Content-Type")
+    ?.includes("application/json");
+
+  if (is204 || !isContentJson) return createOk(null);
 
   let data;
   try {
@@ -68,6 +95,7 @@ export const callApi = async (
       }),
       { cause: e }
     );
+    loggingException(error);
     return createErr(error);
   }
 

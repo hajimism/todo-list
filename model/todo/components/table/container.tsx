@@ -9,7 +9,11 @@ import { p } from "@/styles/typography";
 import { TodoTable } from ".";
 
 export const TodoTableContainer = () => {
-  const result = useGetTodos();
+  const { data: result } = useGetTodos();
+
+  if (!result) {
+    return <p className={p()}>Loading...</p>;
+  }
 
   if (isErr(result)) {
     return <p className={p()}>Sorry, something went wrong...</p>;

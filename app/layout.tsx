@@ -3,6 +3,8 @@ import type { PropsWithChildren } from "react";
 
 import { Inter } from "next/font/google";
 
+import { Providers } from "@/app/providers";
+
 import { Dialog } from "@/common/components/functional/dialog";
 import { Footer } from "@/common/components/layout/footer";
 import { Header } from "@/common/components/layout/header";
@@ -18,10 +20,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-        <Dialog />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+          <Dialog />
+        </Providers>
       </body>
     </html>
   );

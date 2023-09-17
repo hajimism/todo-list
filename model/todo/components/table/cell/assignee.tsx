@@ -1,7 +1,10 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import type { User } from "@/model/user";
 
+import { useCallback, type FC } from "react";
+
+import { useDialog } from "@/common/components/functional/dialog";
 import {
   Select,
   SelectContent,
@@ -10,32 +13,31 @@ import {
   SelectValue,
 } from "@/common/components/ui/select";
 import { TableCell } from "@/common/components/ui/table";
+import { isErr } from "@/common/lib/result";
 
 import { useEditTodoItem } from "@/model/todo/hooks";
 import { useTodoContext } from "@/model/todo/hooks/context";
 
-import type { User } from "@/model/user/";
 import { UserAvatar } from "@/model/user/components/avatar";
-import { useAllCollaborator } from "@/model/user/hooks/allCollaborator";
-import { useCurrentUser } from "@/model/user/hooks/currentUser";
 
-export const TodoAssigneeCell = () => {
+type Props = {
+  users: User[];
+};
+
+export const TodoAssigneeCell: FC<Props> = ({ users }) => {
   const todoContext = useTodoContext();
   const { todo, setAssignee } = useEditTodoItem(todoContext);
-  const allCollaborator = useAllCollaborator();
-  const [currentUser] = useCurrentUser();
-
-  const options: readonly User[] = useMemo(
-    () => (currentUser ? [currentUser, ...allCollaborator] : allCollaborator),
-    [allCollaborator, currentUser]
-  );
+  const { openErrorDialog } = useDialog();
 
   const onSelect = useCallback(
-    (userId: string) => {
-      const assignee = options.find(({ id }) => id === userId);
-      setAssignee(assignee);
+    async (userId: string) => {
+      const assignee = users.find(({ id }) => id === userId);
+      const result = await setAssignee(assignee);
+      if (isErr(result)) {
+        openErrorDialog();
+      }
     },
-    [options, setAssignee]
+    [openErrorDialog, setAssignee, users]
   );
 
   return (
@@ -48,7 +50,7 @@ export const TodoAssigneeCell = () => {
           <SelectValue placeholder='Assginee' />
         </SelectTrigger>
         <SelectContent>
-          {options.map((user) => (
+          {users.map((user) => (
             <SelectItem key={user.id} value={user.id}>
               <div className='flex items-center gap-4'>
                 <UserAvatar user={user} className='h-8 w-8' />

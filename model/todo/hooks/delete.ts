@@ -13,10 +13,10 @@ export const useDeleteTodo = () => {
   return useMutation({
     mutationFn: deleteTodo,
     onMutate: async (todo) => {
-      await queryClient.cancelQueries({ queryKey: [TODO_QUERY_KEY.getList] });
-      const prev = queryClient.getQueryData([TODO_QUERY_KEY.getList]);
+      await queryClient.cancelQueries({ queryKey: [TODO_QUERY_KEY] });
+      const prev = queryClient.getQueryData([TODO_QUERY_KEY]);
       queryClient.setQueryData<TodosQueryResult>(
-        [TODO_QUERY_KEY.getList],
+        [TODO_QUERY_KEY],
 
         (old) => {
           if (!isDefined(old)) return createOk([]);
@@ -30,10 +30,10 @@ export const useDeleteTodo = () => {
       return { prev };
     },
     onError: (_err, _newTodo, context) => {
-      queryClient.setQueryData([TODO_QUERY_KEY.getList], context?.prev);
+      queryClient.setQueryData([TODO_QUERY_KEY], context?.prev);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [TODO_QUERY_KEY.getList] });
+      queryClient.invalidateQueries({ queryKey: [TODO_QUERY_KEY] });
     },
   });
 };

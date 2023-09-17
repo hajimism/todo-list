@@ -1,7 +1,9 @@
 "use client";
 
 import { CheckCircle2, Circle, CircleDot, type LucideIcon } from "lucide-react";
+import { useCallback } from "react";
 
+import { useDialog } from "@/common/components/functional/dialog";
 import {
   Select,
   SelectContent,
@@ -11,6 +13,7 @@ import {
 } from "@/common/components/ui/select";
 import { TableCell } from "@/common/components/ui/table";
 import { cn } from "@/common/lib/cn";
+import { isErr } from "@/common/lib/result";
 
 import { useTodoContext, useEditTodoItem } from "@/model/todo/hooks";
 import type { TodoStatus } from "@/model/todo/type";
@@ -39,10 +42,21 @@ const TODO_STATUS_MAP = {
 export const TodoStatusCell = () => {
   const todoContext = useTodoContext();
   const { todo, setStatus } = useEditTodoItem(todoContext);
+  const { openErrorDialog } = useDialog();
+
+  const onSelect = useCallback(
+    async (status: TodoStatus) => {
+      const result = await setStatus(status);
+      if (isErr(result)) {
+        openErrorDialog();
+      }
+    },
+    [openErrorDialog, setStatus]
+  );
 
   return (
     <TableCell>
-      <Select value={todo.status} onValueChange={setStatus}>
+      <Select value={todo.status} onValueChange={onSelect}>
         <SelectTrigger>
           <SelectValue placeholder='set me' />
         </SelectTrigger>

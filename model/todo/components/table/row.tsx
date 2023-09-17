@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { Suspense, type FC } from "react";
 
 import { TableRow } from "@/common/components/ui/table";
 
@@ -6,9 +6,9 @@ import {
   TodoTitleCell,
   TodoStatusCell,
   TodoDueToCell,
-  TodoAssigneeCell,
   TodoRemoveCell,
 } from "@/model/todo/components/table/cell";
+import { TodoAssigneeCellContainer } from "@/model/todo/components/table/cell/assignee.container";
 import { TodoContext } from "@/model/todo/hooks";
 import type { Todo } from "@/model/todo/type";
 
@@ -23,7 +23,9 @@ export const TodoTableRow: FC<Props> = ({ todo }) => {
         <TodoTitleCell />
         <TodoStatusCell />
         <TodoDueToCell />
-        <TodoAssigneeCell />
+        <Suspense>
+          <TodoAssigneeCellContainer />
+        </Suspense>
         <TodoRemoveCell />
       </TableRow>
     </TodoContext.Provider>

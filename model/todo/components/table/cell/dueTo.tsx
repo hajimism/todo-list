@@ -1,7 +1,9 @@
 "use client";
 
 import { CalendarIcon } from "lucide-react";
+import { useCallback } from "react";
 
+import { useDialog } from "@/common/components/functional/dialog";
 import { Button } from "@/common/components/ui/button";
 import { Calendar } from "@/common/components/ui/calendar";
 import {
@@ -14,15 +16,28 @@ import { cn } from "@/common/lib/cn";
 import { format } from "@/common/lib/date";
 import { hasDatePassed } from "@/common/lib/date/hasDatePassed";
 import { isDefined } from "@/common/lib/guard";
+import { isErr } from "@/common/lib/result";
 
 import { useEditTodoItem, useTodoContext } from "@/model/todo/hooks";
+import type { TodoDueTo } from "@/model/todo/type";
 
 export const TodoDueToCell = () => {
   const todoContext = useTodoContext();
   const { todo, setDueTo } = useEditTodoItem(todoContext);
   const { dueTo } = todo;
+  const { openErrorDialog } = useDialog();
 
   const isDead = isDefined(dueTo) && hasDatePassed(dueTo);
+
+  const onSelect = useCallback(
+    async (date: TodoDueTo) => {
+      const result = await setDueTo(date);
+      if (isErr(result)) {
+        openErrorDialog();
+      }
+    },
+    [openErrorDialog, setDueTo]
+  );
 
   return (
     <TableCell>
@@ -48,7 +63,7 @@ export const TodoDueToCell = () => {
           <Calendar
             mode='single'
             selected={dueTo}
-            onSelect={setDueTo}
+            onSelect={onSelect}
             initialFocus
           />
         </PopoverContent>

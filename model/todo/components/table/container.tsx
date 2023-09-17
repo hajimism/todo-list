@@ -2,7 +2,7 @@
 
 import { isErr, unwrapOk } from "@/common/lib/result";
 
-import { useGetTodos } from "@/model/todo/hooks/get";
+import { useGetTodos } from "@/model/todo/hooks/";
 
 import { p } from "@/styles/typography";
 

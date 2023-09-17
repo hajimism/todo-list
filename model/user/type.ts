@@ -1,9 +1,12 @@
-import { Input, object, string } from "@/common/lib/schema";
+import type { Input } from "@/common/lib/schema";
+import { array, object, optional, string } from "@/common/lib/schema";
 
 export const UserSchema = object({
   id: string(),
   name: string(),
-  iconUrl: string(),
+  iconUrl: optional(string()),
 });
+
+export const UserListSchema = array(UserSchema);
 
 export type User = Input<typeof UserSchema>;

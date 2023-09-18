@@ -60,8 +60,8 @@ dependencies:
     specifier: ^2.4.2
     version: 2.4.2(@types/react@18.2.21)(react@18.2.0)
   jotai-tanstack-query:
-    specifier: ^0.7.0
-    version: 0.7.0(@tanstack/query-core@4.29.5)(jotai@2.4.2)
+    specifier: ^0.7.2
+    version: 0.7.2(@tanstack/query-core@4.29.5)(jotai@2.4.2)
   lucide-react:
     specifier: ^0.276.0
     version: 0.276.0(react@18.2.0)
@@ -10669,8 +10669,8 @@ packages:
     resolution: {integrity: sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==}
     hasBin: true
 
-  /jotai-tanstack-query@0.7.0(@tanstack/query-core@4.29.5)(jotai@2.4.2):
-    resolution: {integrity: sha512-/fzDgMDmJYHYCHHCfWtcHJCiNkxiLJazIza4FEyXptGIDIEVDHvmt8TWmHBbbqgXLkQOjJEWb2HwUIwmATyAew==}
+  /jotai-tanstack-query@0.7.2(@tanstack/query-core@4.29.5)(jotai@2.4.2):
+    resolution: {integrity: sha512-acwJJf4HKgs4c0mtgRJEvdL7jqQnKcT0ARvs33weGysLpQ8L1S3SqPPoMeHuLDz6vREcocsVFRZ5RsB7rJJHZQ==}
     peerDependencies:
       '@tanstack/query-core': '*'
       jotai: '>=1.11.0'

@@ -1,3 +1,5 @@
+"use client";
+
 import { Suspense, type FC } from "react";
 
 import { TableRow } from "@/common/components/ui/table";

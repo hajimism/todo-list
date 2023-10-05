@@ -2,17 +2,17 @@
 
 import { isErr, unwrapOk } from "@/common/lib/result";
 
+import { TodoTableLoading } from "@/model/todo/components/table/loading";
+import { TodoTableView } from "@/model/todo/components/table/view";
 import { useGetTodos } from "@/model/todo/hooks/";
 
 import { p } from "@/styles/typography";
-
-import { TodoTable } from ".";
 
 export const TodoTableContainer = () => {
   const { data: result } = useGetTodos();
 
   if (!result) {
-    return <p className={p()}>Loading...</p>;
+    return <TodoTableLoading />;
   }
 
   if (isErr(result)) {
@@ -21,5 +21,5 @@ export const TodoTableContainer = () => {
 
   const todos = unwrapOk(result);
 
-  return <TodoTable todos={todos} />;
+  return <TodoTableView todos={todos} />;
 };

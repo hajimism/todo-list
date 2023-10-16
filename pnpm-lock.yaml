@@ -81,8 +81,8 @@ dependencies:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
   remeda:
-    specifier: ^1.26.0
-    version: 1.26.0
+    specifier: ^1.27.1
+    version: 1.27.1
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -13135,8 +13135,8 @@ packages:
       unist-util-visit: 2.0.3
     dev: true
 
-  /remeda@1.26.0:
-    resolution: {integrity: sha512-v+Qbi2krvXknCvG60gviLUSBJQPxXUVBAvi64m3Awoua3X+ygAmPYPrbFgqwPpiM1tBHNBVrHPBKtza7if+HyQ==}
+  /remeda@1.27.1:
+    resolution: {integrity: sha512-va05uuDBz/E55O9wmpDdbVlwdWbHGJJy3oC0EAHSFn74MpWF3S81NVJDz/FW05bc/UDg769t1u6YPhBK/gmvLw==}
     dev: false
 
   /renderkid@3.0.0:

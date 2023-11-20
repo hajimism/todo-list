@@ -99,8 +99,8 @@ dependencies:
     specifier: ^2.9.1
     version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
   valibot:
-    specifier: ^0.15.0
-    version: 0.15.0
+    specifier: ^0.21.0
+    version: 0.21.0
 
 devDependencies:
   '@commitlint/cli':
@@ -14785,8 +14785,8 @@ packages:
       convert-source-map: 1.9.0
     dev: true
 
-  /valibot@0.15.0:
-    resolution: {integrity: sha512-OOE8+EeR/TO/uks08FGYe/6DJVIgkD4Ap3dkd8M4ws/bCaQUg3XDk1PGDFiAUJqyQilW/QZ5buBEA3R1gIgQ0g==}
+  /valibot@0.21.0:
+    resolution: {integrity: sha512-XnzpX93b1vQL7CB3fHlhpLg7OutYpc3ke8SKOvp7IXgicRfTdP/w8+bf0DjhVsySq6YdF4Opld05mj6bTobo9g==}
     dev: false
 
   /valid-filename@4.0.0:

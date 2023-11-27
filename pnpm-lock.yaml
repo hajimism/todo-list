@@ -57,11 +57,11 @@ dependencies:
     specifier: 13.4.19
     version: 13.4.19(eslint@8.48.0)(typescript@5.2.2)
   jotai:
-    specifier: ^2.4.2
-    version: 2.4.2(@types/react@18.2.21)(react@18.2.0)
+    specifier: ^2.6.0
+    version: 2.6.0(@types/react@18.2.21)(react@18.2.0)
   jotai-tanstack-query:
     specifier: ^0.7.0
-    version: 0.7.0(@tanstack/query-core@4.29.5)(jotai@2.4.2)
+    version: 0.7.0(@tanstack/query-core@4.29.5)(jotai@2.6.0)
   lucide-react:
     specifier: ^0.276.0
     version: 0.276.0(react@18.2.0)
@@ -10669,18 +10669,18 @@ packages:
     resolution: {integrity: sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==}
     hasBin: true
 
-  /jotai-tanstack-query@0.7.0(@tanstack/query-core@4.29.5)(jotai@2.4.2):
+  /jotai-tanstack-query@0.7.0(@tanstack/query-core@4.29.5)(jotai@2.6.0):
     resolution: {integrity: sha512-/fzDgMDmJYHYCHHCfWtcHJCiNkxiLJazIza4FEyXptGIDIEVDHvmt8TWmHBbbqgXLkQOjJEWb2HwUIwmATyAew==}
     peerDependencies:
       '@tanstack/query-core': '*'
       jotai: '>=1.11.0'
     dependencies:
       '@tanstack/query-core': 4.29.5
-      jotai: 2.4.2(@types/react@18.2.21)(react@18.2.0)
+      jotai: 2.6.0(@types/react@18.2.21)(react@18.2.0)
     dev: false
 
-  /jotai@2.4.2(@types/react@18.2.21)(react@18.2.0):
-    resolution: {integrity: sha512-90jXVOd9h6gi5JXk558M+wnJfaaVN2WegcNOCfiFbWboNaDl6DkRgiY/K1oeqTfYJmq8yM7XPsL99LAvcOPqhw==}
+  /jotai@2.6.0(@types/react@18.2.21)(react@18.2.0):
+    resolution: {integrity: sha512-Vt6hsc04Km4j03l+Ax+Sc+FVft5cRJhqgxt6GTz6GM2eM3DyX3CdBdzcG0z2FrlZToL1/0OAkqDghIyARWnSuQ==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
       '@types/react': '>=17.0.0'
